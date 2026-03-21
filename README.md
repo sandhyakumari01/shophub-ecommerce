@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-commerce App
 
-## Getting Started
+This is a **Next.js** e-commerce application bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).  
+It allows users to browse products, view product details, add items to a cart, manage a wishlist, and proceed to checkout.
 
-First, run the development server:
+## Features
 
-```bash
+- Fetch products from a public API ([DummyJSON](https://dummyjson.com/products))
+- Product listing and detailed product pages
+- Cart functionality using `CartContext`
+- Wishlist functionality using `WishlistContext`
+- Checkout flow
+- Responsive UI with reusable `ProductCard` component
+
+## Project Structure
+ecommerce-app/
+│
+├─ app/
+│ ├─ cart/page.tsx # Cart page
+│ ├─ checkout/page.tsx # Checkout page
+│ ├─ product/[id]/page.tsx # Individual product detail page
+│ └─ wishlist/page.tsx # Wishlist page
+│
+├─ components/
+│ └─ productCard.tsx # Reusable product card component
+│
+├─ context/
+│ ├─ cartContext.tsx # Cart context provider
+│ └─ wishlistContext.tsx # Wishlist context provider
+│
+├─ lib/
+│ └─ api.ts # API functions to fetch products
+│
+└─ README.md # Project documentation
+
+
+## API Details
+
+API functions are located in `lib/api.ts`:
+
+```ts
+
+npm install
 npm run dev
-# or
+
+# or with yarn
+yarn
 yarn dev
-# or
+
+# or with pnpm
+pnpm install
 pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
+ in your browser. The app will auto-update as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Context Providers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+CartContext: Manages cart state and provides functions to add/remove products.
 
-## Learn More
+WishlistContext: Manages wishlist state and allows users to add/remove favorite products.
 
-To learn more about Next.js, take a look at the following resources:
+Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ProductCard: Reusable card component for displaying product information like image, title, price, and buttons to add to cart or wishlist.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Learn More
 
-## Deploy on Vercel
+Next.js Documentation
+ – learn about Next.js features and API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Learn Next.js
+ – interactive Next.js tutorial
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel Deployment
+ – deploy your app easily
+
+Deploy on Vercel
+
+The easiest way to deploy this Next.js app is through Vercel
+.
+
+Check out Next.js deployment documentation
+ for more details.
+
+
+This README now includes:
+
+1. **Project overview**  
+2. **Folder structure explanation**  
+3. **API function details**  
+4. **Context usage**  
+5. **Component overview**  
+6. **Setup & deployment instructions**  
+
+If you want, I can also add **screenshots and demo links** to make it look exactly like a polished GitHub project README.  
+
+Do you want me to do that next?
