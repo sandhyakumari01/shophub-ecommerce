@@ -1,7 +1,13 @@
 # E-commerce App
 
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.0-blue?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.2-blue?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 This is a **Next.js** e-commerce application bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).  
 It allows users to browse products, view product details, add items to a cart, manage a wishlist, and proceed to checkout.
+
+---
 
 ## Features
 
@@ -12,87 +18,110 @@ It allows users to browse products, view product details, add items to a cart, m
 - Checkout flow
 - Responsive UI with reusable `ProductCard` component
 
+---
+
 ## Project Structure
+
+```
 ecommerce-app/
 │
 ├─ app/
-│ ├─ cart/page.tsx # Cart page
-│ ├─ checkout/page.tsx # Checkout page
-│ ├─ product/[id]/page.tsx # Individual product detail page
-│ └─ wishlist/page.tsx # Wishlist page
+│  ├─ cart/page.tsx            # Cart page
+│  ├─ checkout/page.tsx        # Checkout page
+│  ├─ product/[id]/page.tsx    # Individual product detail page
+│  └─ wishlist/page.tsx        # Wishlist page
 │
 ├─ components/
-│ └─ productCard.tsx # Reusable product card component
+│  ├─ clientButtons.tsx        # Buttons for cart/wishlist
+│  ├─ footer.tsx               # Footer component
+│  ├─ navbar.tsx               # Navbar component
+│  ├─ productCard.tsx          # Product card component
+│  ├─ reviews.tsx              # Product reviews
+│  ├─ skeleton/                # Skeleton loaders
+│  │  ├─ cartSkeleton.tsx
+│  │  ├─ productSkeleton.tsx
+│  │  └─ wishlistSkeleton.tsx
+│  └─ userMenu.tsx             # User dropdown menu
 │
 ├─ context/
-│ ├─ cartContext.tsx # Cart context provider
-│ └─ wishlistContext.tsx # Wishlist context provider
+│  ├─ CartContext.tsx          # Cart context provider
+│  └─ WishlistContext.tsx      # Wishlist context provider
 │
 ├─ lib/
-│ └─ api.ts # API functions to fetch products
+│  └─ api.ts                   # API functions to fetch products
 │
-└─ README.md # Project documentation
+├─ public/                     # Static assets
+├─ styles/                     # Global styles
+├─ postcss.config.js
+├─ tailwind.config.ts
+├─ next.config.ts
+├─ package.json
+└─ README.md
 
+```
 
-## API Details
+Setup & Installation
 
-API functions are located in `lib/api.ts`:
+Clone the repository:
 
-```ts
+git clone https://github.com/sandhyakumari01/e-commerce-web.git
 
+cd e-commerce-web
+
+Install dependencies:
+
+```
 npm install
-npm run dev
-
-# or with yarn
+# or
 yarn
-yarn dev
-
-# or with pnpm
+# or
 pnpm install
+```
+
+Run the development server:
+
+```
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
+```
 
 Open http://localhost:3000
- in your browser. The app will auto-update as you edit files.
-
-Context Providers
-
-CartContext: Manages cart state and provides functions to add/remove products.
-
-WishlistContext: Manages wishlist state and allows users to add/remove favorite products.
-
-Components
-
-ProductCard: Reusable card component for displaying product information like image, title, price, and buttons to add to cart or wishlist.
-
-Learn More
-
-Next.js Documentation
- – learn about Next.js features and API
-
-Learn Next.js
- – interactive Next.js tutorial
-
-Vercel Deployment
- – deploy your app easily
-
-Deploy on Vercel
-
-The easiest way to deploy this Next.js app is through Vercel
-.
-
-Check out Next.js deployment documentation
- for more details.
+ in your browser.
+The app will auto-update as you edit files.
 
 
-This README now includes:
+API Details
 
-1. **Project overview**  
-2. **Folder structure explanation**  
-3. **API function details**  
-4. **Context usage**  
-5. **Component overview**  
-6. **Setup & deployment instructions**  
+API functions are located in lib/api.ts:
 
-If you want, I can also add **screenshots and demo links** to make it look exactly like a polished GitHub project README.  
+## Context Providers
 
-Do you want me to do that next?
+- **CartContext**  
+  Manages cart state and provides functions to add, remove, and update products in the cart.
+
+- **WishlistContext**  
+  Manages wishlist state and allows users to add or remove favorite products.
+
+---
+
+## Components Overview
+
+- **ProductCard**  
+  Displays product information including image, title, price, and buttons to add to cart or wishlist.
+
+- **Navbar & Footer**  
+  Persistent navigation and footer components visible across all pages.
+
+- **UserMenu**  
+  Dropdown menu for user actions such as profile, orders, or logout.
+
+- **Skeleton Loaders**  
+  - `cartSkeleton` – shows loading state for cart items  
+  - `productSkeleton` – shows loading state for product listing  
+  - `wishlistSkeleton` – shows loading state for wishlist items
+
+
+
