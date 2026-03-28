@@ -9,6 +9,9 @@ It allows users to browse products, view product details, add items to a cart, m
 
 ---
 
+## 🚀 Live Demo
+👉 https://shophubecomm.netlify.app/
+
 ## Features
 
 - Fetch products from a public API ([DummyJSON](https://dummyjson.com/products))
@@ -122,6 +125,8 @@ API functions are located in lib/api.ts:
   - `cartSkeleton` – shows loading state for cart items  
   - `productSkeleton` – shows loading state for product listing  
   - `wishlistSkeleton` – shows loading state for wishlist items
+
+
 
 
 
