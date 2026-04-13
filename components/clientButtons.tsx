@@ -23,7 +23,7 @@ export default function ClientButtons({ product }: any) {
           disabled
           className="flex-1 bg-gray-400 text-white py-3 rounded-xl cursor-not-allowed"
         >
-          Out of Stock 
+          Out of Stock
         </button>
       ) : isInCart ? (
         <button
@@ -35,7 +35,7 @@ export default function ClientButtons({ product }: any) {
       ) : (
         <button
           onClick={() => addToCart(product)}
-          className="flex-1 bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition cursor-pointer"
+          className="flex-1 bg-primary text-white py-3 rounded-xl hover:bg-secondary transition cursor-pointer"
         >
           Add to Cart 🛒
         </button>

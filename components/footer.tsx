@@ -8,11 +8,11 @@ export default function Footer() {
         <div className="xl:grid xl:grid-cols-2 xl:gap-8">
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="rounded-lg bg-indigo-600 p-1.5 text-white">
+              <div className="rounded-lg bg-primary 0 p-1.5 text-white">
                 <Store size={22} />
               </div>
               <span className="text-2xl font-black tracking-tight text-gray-900">
-                Shop<span className="text-indigo-600">Hub</span>
+                Shop<span className="text-primary">Hub</span>
               </span>
             </div>
             <p className="text-sm leading-6 text-gray-600 max-w-xs">
@@ -22,46 +22,46 @@ export default function Footer() {
           </div>
 
 
-            <div className="md:grid md:grid-cols-1 gap-8">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900">
-                  Contact Us
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  <li className="flex items-center gap-3 text-sm text-gray-600">
-                    <a
-                      href="https://github.com/sandhyakumari01"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 hover:text-indigo-600 transition"
-                    >
-                      <Github size={16} className="text-indigo-600" /> GitHub
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-gray-600">
-                    <a
-                      href="https://www.linkedin.com/in/sandhyakumari01/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 hover:text-indigo-600 transition"
-                    >
-                      <Linkedin size={16} className="text-indigo-600" />{" "}
-                      LinkedIn
-                    </a>
-                  </li>
-                </ul>
-              </div>
+          <div className="md:grid md:grid-cols-1 gap-8">
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900">
+                Contact Us
+              </h3>
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-center gap-3 text-sm text-gray-600">
+                  <a
+                    href="https://github.com/sandhyakumari01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary transition"
+                  >
+                    <Github size={16} className="text-primary" /> GitHub
+                  </a>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-gray-600">
+                  <a
+                    href="https://www.linkedin.com/in/sandhyakumari01/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary transition"
+                  >
+                    <Linkedin size={16} className="text-primary" />{" "}
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
+      </div>
 
 
-        <div className="my-2.5 border-t border-gray-100 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500 text-center  m-auto">
-            &copy; {new Date().getFullYear()} ShopHub Inc. All rights reserved.
-          </p>
-   
-        </div>
+      <div className="my-2.5 border-t border-gray-100 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-xs text-gray-500 text-center  m-auto">
+          &copy; {new Date().getFullYear()} ShopHub Inc. All rights reserved.
+        </p>
+
+      </div>
 
     </footer>
   );

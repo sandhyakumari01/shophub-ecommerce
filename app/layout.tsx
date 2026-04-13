@@ -12,20 +12,28 @@ import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 
 export default function RootLayout({ children }: any) {
   return (
-    <html>
-      <body>
+    <html className={cn("font-sans", geist.variable)}>
+      <body className="min-h-screen flex flex-col">
         <CartProvider>
-      <WishlistProvider>
-         <Toaster position="top-right" />
-        <Navbar/>
-          {children}
+          <WishlistProvider>
+            <Toaster position="top-right" />
+
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+
           </WishlistProvider>
-          <Footer/>
-          </CartProvider>
+        </CartProvider>
       </body>
     </html>
   );
