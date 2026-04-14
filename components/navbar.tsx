@@ -9,9 +9,11 @@ import Link from "next/link";
 import { UserMenu } from "./userMenu";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const router = useRouter();
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
   const { cart } = useContext(CartContext);
   const { wishlist } = useContext(WishlistContext);
 
@@ -52,13 +54,16 @@ export default function Navbar() {
             )}
           </Link>
 
-          <Button
-            className="p-3 rounded-md"
-            onClick={() => router.push("/auth/login")}
-          >
-            Login
-          </Button>
-          <UserMenu />
+          {isAuthenticated ? (
+            <UserMenu />
+          ) : (
+            <Button
+              className="p-3 rounded-md"
+              onClick={() => router.push("/auth/login")}
+            >
+              Login
+            </Button>
+          )}
 
         </div>
       </div>
