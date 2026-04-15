@@ -1,9 +1,6 @@
-
-
 "use client";
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
-import { WishlistContext } from "@/context/WishlistContext";
 import { ShoppingCart, Heart, Store } from "lucide-react";
 import Link from "next/link";
 import { UserMenu } from "./userMenu";
@@ -14,8 +11,14 @@ import { useSelector } from "react-redux";
 export default function Navbar() {
   const router = useRouter();
   const { isAuthenticated } = useSelector((state: any) => state.auth);
-  const { cart } = useContext(CartContext);
-  const { wishlist } = useContext(WishlistContext);
+  // const { cart } = useContext(CartContext);
+
+  const cart = useSelector(
+    (state: any) => state.cart.items
+  );
+  const wishlist = useSelector(
+    (state: any) => state.wishlist.items
+  );
 
   return (
     <nav className="sticky top-0 z-50 w-full shadow-md bg-white">
@@ -33,6 +36,7 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-6">
+
 
           <Link href="/wishlist" className="relative flex items-center gap-1">
             <Heart size={18} />

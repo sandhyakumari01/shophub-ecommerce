@@ -6,8 +6,9 @@ import { ForgotPassword } from "@/app/services/auth";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import AuthRedirectLayout from "@/components/authRedirectLayout";
 
-export default function ForgotPasswordPage() {
+function ForgotPasswordContent() {
   const router = useRouter();
 
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -110,5 +111,13 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ForgotPasswordPage() {
+  return (
+    <AuthRedirectLayout>
+      <ForgotPasswordContent />
+    </AuthRedirectLayout>
   );
 }

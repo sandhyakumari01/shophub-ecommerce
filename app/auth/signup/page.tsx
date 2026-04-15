@@ -9,9 +9,10 @@ import { useRouter } from "next/navigation";
 import { loginSuccess } from "@/redux/authSlice";
 import { useDispatch } from "react-redux";
 import { Button } from "@/components/ui/button";
+import AuthRedirectLayout from "@/components/authRedirectLayout";
 
 
-export default function SignupPage() {
+function SignupContent() {
   const dispatch = useDispatch();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -151,5 +152,12 @@ export default function SignupPage() {
         </p>
       </div>
     </div>
+  );
+}
+export default function SignupPage() {
+  return (
+    <AuthRedirectLayout>
+      <SignupContent />
+    </AuthRedirectLayout>
   );
 }

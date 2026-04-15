@@ -1,11 +1,14 @@
 "use client";
 import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
-import { CreditCard, Truck, ShieldCheck, ChevronLeft } from "lucide-react";
+import { CreditCard, Truck, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import ProtectedLayout from "@/components/protectesRoute";
 
-export default function Checkout() {
-  const { cart } = useContext(CartContext);
+function CheckoutContent() {
+  // const { cart } = useContext(CartContext);
+  const cart = useSelector((state: any) => state.cart.items)
 
   const subtotal = cart.reduce((acc: number, item: any) => acc + (item.price * (item.quantity || 1)), 0);
   const shipping = subtotal > 1000 ? 0 : 99;
@@ -110,5 +113,13 @@ export default function Checkout() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <ProtectedLayout>
+      <CheckoutContent />
+    </ProtectedLayout>
   );
 }

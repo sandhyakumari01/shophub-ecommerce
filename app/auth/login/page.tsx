@@ -6,13 +6,16 @@ import { AuthenticateLogin } from "@/app/services/auth";
 import { toast } from "react-toastify";
 import { loginSuccess } from "@/redux/authSlice";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import AuthRedirectLayout from "@/components/authRedirectLayout";
 
-export default function LoginPage() {
+function LoginContent() {
   const dispatch = useDispatch();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/";
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setError] = useState({ email: "", password: "" })
 
@@ -56,8 +59,11 @@ export default function LoginPage() {
             })
           );
         }
+        // setTimeout(() => {
+        //   router.push("/");
+        // }, 1500);
         setTimeout(() => {
-          router.push("/");
+          router.push(redirect);
         }, 1500);
       } else {
         toast.error(response?.message || "Login failed");
@@ -98,7 +104,7 @@ export default function LoginPage() {
 
           <span
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
+            className="absolute right-3 top-[65%] -translate-y-1/2 cursor-pointer text-gray-600"
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
@@ -128,5 +134,13 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <AuthRedirectLayout>
+      <LoginContent />
+    </AuthRedirectLayout>
   );
 }

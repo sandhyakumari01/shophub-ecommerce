@@ -5,11 +5,16 @@ import { CartContext } from "@/context/CartContext";
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import CartSkeleton from "@/components/skeleton/cartSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, updateQuantity } from "@/redux/cartSlice";
+import ProtectedLayout from "@/components/protectesRoute";
 
-export default function CartPage() {
+function CartContent() {
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const cart = useSelector((state: any) => state.cart.items);
+  // const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
 
   const subtotal = cart.reduce(
     (acc: any, item: any) => acc + item.price * (item.quantity || 1),
@@ -76,7 +81,8 @@ export default function CartPage() {
                     <p className="text-sm text-gray-500">{item.category}</p>
                   </div>
                   <button
-                    onClick={() => removeFromCart(item.id)}
+                    // onClick={() => removeFromCart(item.id)}
+                    onClick={() => dispatch(removeFromCart(item.id))}
                     className="text-gray-400 transition-colors hover:text-red-500 cursor-pointer"
                   >
                     <Trash2 size={18} />
@@ -86,8 +92,16 @@ export default function CartPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3 rounded-lg border border-gray-200 px-2 py-1">
                     <button
+                      // onClick={() =>
+                      //   updateQuantity(item.id, (item.quantity || 1) - 1)
+                      // }
                       onClick={() =>
-                        updateQuantity(item.id, (item.quantity || 1) - 1)
+                        dispatch(
+                          updateQuantity({
+                            id: item.id,
+                            quantity: (item.quantity || 1) - 1,
+                          })
+                        )
                       }
                       className="rounded p-1 transition-colors hover:bg-gray-100 cursor-pointer"
                     >
@@ -97,8 +111,16 @@ export default function CartPage() {
                       {item.quantity || 1}
                     </span>
                     <button
+                      // onClick={() =>
+                      //   updateQuantity(item.id, (item.quantity || 1) + 1)
+                      // }
                       onClick={() =>
-                        updateQuantity(item.id, (item.quantity || 1) + 1)
+                        dispatch(
+                          updateQuantity({
+                            id: item.id,
+                            quantity: (item.quantity || 1) + 1,
+                          })
+                        )
                       }
                       className="rounded p-1 transition-colors hover:bg-gray-100 cursor-pointer"
                     >
@@ -146,5 +168,12 @@ export default function CartPage() {
         </div>
       </div>
     </div>
+  );
+}
+export default function CartPage() {
+  return (
+    <ProtectedLayout>
+      <CartContent />
+    </ProtectedLayout>
   );
 }

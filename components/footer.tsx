@@ -1,4 +1,5 @@
 import { Store, Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 
 export default function Footer() {
@@ -7,14 +8,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16">
         <div className="xl:grid xl:grid-cols-2 xl:gap-8">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2 cursor-pointer">
               <div className="rounded-lg bg-primary 0 p-1.5 text-white">
                 <Store size={22} />
               </div>
               <span className="text-2xl font-black tracking-tight text-gray-900">
                 Shop<span className="text-primary">Hub</span>
               </span>
-            </div>
+            </Link>
             <p className="text-sm leading-6 text-gray-600 max-w-xs">
               Making your shopping experience seamless, fast, and secure.
               Discover the best deals on premium products.

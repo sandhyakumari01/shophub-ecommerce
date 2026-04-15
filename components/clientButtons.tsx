@@ -1,16 +1,32 @@
+// D: \code\shophub - ecommerce\frontend\components\clientButtons.tsx
 "use client";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/CartContext";
 import { WishlistContext } from "@/context/WishlistContext";
+import { addToWishlist } from "@/redux/wishlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "@/redux/cartSlice";
 
 export default function ClientButtons({ product }: any) {
-  const { cart, addToCart } = useContext(CartContext);
-  const { wishlist, addToWishlist } = useContext(WishlistContext);
+  const dispatch = useDispatch();
   const router = useRouter();
+  // const { cart, addToCart } = useContext(CartContext);
+  // const { wishlist, addToWishlist } = useContext(WishlistContext);
+
+
+  // const isInCart = cart.some((item: any) => item.id === product.id);
+  // const isInWishlist = wishlist.some((item: any) => item.id === product.id);
+
+  const cart = useSelector((state: any) => state.cart.items);
+  const wishlist = useSelector(
+    (state: any) => state.wishlist.items
+  );
 
   const isInCart = cart.some((item: any) => item.id === product.id);
-  const isInWishlist = wishlist.some((item: any) => item.id === product.id);
+  const isInWishlist = wishlist.some(
+    (item: any) => item.id === product.id
+  );
 
   const isOutOfStock =
     product.availabilityStatus !== "In Stock";
@@ -34,7 +50,8 @@ export default function ClientButtons({ product }: any) {
         </button>
       ) : (
         <button
-          onClick={() => addToCart(product)}
+          // onClick={() => addToCart(product)}
+          onClick={() => dispatch(addToCart(product))}
           className="flex-1 bg-primary text-white py-3 rounded-xl hover:bg-secondary transition cursor-pointer"
         >
           Add to Cart 🛒
@@ -51,7 +68,8 @@ export default function ClientButtons({ product }: any) {
         </button>
       ) : (
         <button
-          onClick={() => addToWishlist(product)}
+          // onClick={() => addToWishlist(product)}
+          onClick={() => dispatch(addToWishlist(product))}
           className="flex-1 border py-3 rounded-xl hover:bg-gray-100 transition cursor-pointer"
         >
           ❤️ Wishlist
