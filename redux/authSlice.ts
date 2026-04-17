@@ -8,11 +8,13 @@ interface User {
 
 interface AuthState {
   user: User | null;
+  token: string | null;
   isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
   user: null,
+  token: null,
   isAuthenticated: false,
 };
 
@@ -22,18 +24,36 @@ const authSlice = createSlice({
   reducers: {
     loginSuccess: (
       state,
-      action: PayloadAction<{ user: User; isAuthenticated: boolean }>,
+      action: PayloadAction<{ user: User; token: string }>,
     ) => {
       state.user = action.payload.user;
-      state.isAuthenticated = action.payload.isAuthenticated;
+      state.token = action.payload.token;
+      state.isAuthenticated = true;
+
+      localStorage.setItem("token", action.payload.token);
     },
 
     logout: (state) => {
       state.user = null;
+      state.token = null;
       state.isAuthenticated = false;
+
+      localStorage.removeItem("token");
+    },
+
+    loadUserFromStorage: (state) => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        state.token = token;
+        state.isAuthenticated = true;
+      } else {
+        state.isAuthenticated = false;
+      }
     },
   },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logout, loadUserFromStorage } = authSlice.actions;
+
 export default authSlice.reducer;

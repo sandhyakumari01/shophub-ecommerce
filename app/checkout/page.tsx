@@ -5,6 +5,9 @@ import { CreditCard, Truck, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import ProtectedLayout from "@/components/protectesRoute";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 function CheckoutContent() {
   // const { cart } = useContext(CartContext);
@@ -30,35 +33,50 @@ function CheckoutContent() {
           <div className="lg:col-span-7">
             <h1 className="text-3xl font-black text-gray-900 mb-8">Checkout</h1>
 
-            <section className="rounded-3xl bg-white p-8 shadow-sm border border-gray-100">
+            <section className="rounded-3xl bg-white p-5 sm:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-3 mb-6">
                 <div className="bg-indigo-100 p-2 rounded-lg text-primary">
                   <Truck size={20} />
                 </div>
-                <h2 className="text-xl font-bold text-gray-800">Shipping Information</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+                  Shipping Information
+                </h2>
               </div>
 
               <form className="grid gap-4">
-                <div className="grid grid-cols-2 gap-4">
+                {/* Name + Email */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase text-gray-400 ml-1">Full Name</label>
-                    <input type="text" placeholder="Enter Your Name" className="w-full rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
+                    <Label className="text-xs font-bold uppercase text-gray-400 ml-1">
+                      Full Name
+                    </Label>
+                    <Input placeholder="Enter Your Name" className="py-5" />
                   </div>
+
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase text-gray-400 ml-1">Email Address</label>
-                    <input type="email" placeholder="Enter Your Email" className="w-full rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
+                    <Label className="text-xs font-bold uppercase text-gray-400 ml-1">
+                      Email Address
+                    </Label>
+                    <Input type="email" placeholder="Enter Your Email" className="py-5" />
                   </div>
                 </div>
 
+                {/* Address */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold uppercase text-gray-400 ml-1">Street Address</label>
-                  <textarea rows={3} placeholder="House no, Street name, Landmark" className="w-full rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
+                  <Label className="text-xs font-bold uppercase text-gray-400 ml-1">
+                    Street Address
+                  </Label>
+                  <Textarea
+                    rows={3}
+                    placeholder="House no, Street name, Landmark"
+                  />
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
-                  <input placeholder="City" className="rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
-                  <input placeholder="State" className="rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
-                  <input placeholder="Pincode" className="rounded-xl border border-gray-200 p-3 outline-none focus:border-primary transition-all bg-gray-50/50" />
+                {/* City / State / Pincode */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <Input placeholder="City" className="py-5" />
+                  <Input placeholder="State" className="py-5" />
+                  <Input placeholder="Pincode" className="py-5" />
                 </div>
               </form>
             </section>

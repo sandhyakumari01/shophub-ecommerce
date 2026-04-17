@@ -51,17 +51,14 @@ function LoginContent() {
       const response = await AuthenticateLogin(formData)
       if (response?.success) {
         toast.success(response.message || "Login successful");
-        if (response?.success && response?.user) {
+        if (response?.success && response?.user && response?.token) {
           dispatch(
             loginSuccess({
               user: response.user,
-              isAuthenticated: true,
+              token: response.token,
             })
           );
         }
-        // setTimeout(() => {
-        //   router.push("/");
-        // }, 1500);
         setTimeout(() => {
           router.push(redirect);
         }, 1500);

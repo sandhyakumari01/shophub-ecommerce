@@ -1,15 +1,16 @@
 import AffiliateProductsList from "@/components/affiliateProduct/affiliateProductList";
 import Products from "@/components/productCard";
+import BannerCarousel from "./banner/page";
+import AffiliateProductBanner from "@/components/affiliateProduct/affiliateCarousel";
 
 
 export default function Home() {
   return (
-    <div>
-      {/* <h1>Normal Products</h1> */}
+    <div className="mx-8">
       <Products />
-
-      {/* <h1>Affiliate Products</h1> */}
+      <AffiliateProductBanner />
       <AffiliateProductsList />
+      <BannerCarousel />
     </div>
   );
 }

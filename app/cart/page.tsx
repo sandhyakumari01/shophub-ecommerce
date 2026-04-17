@@ -88,7 +88,9 @@ function CartContent() {
                     <Trash2 size={18} />
                   </button>
                 </div>
-
+                <span className="text-[14px] font-black text-gray-900 block md:hidden my-2">
+                  ₹{(item.price * (item.quantity || 1)).toFixed(2)}
+                </span>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3 rounded-lg border border-gray-200 px-2 py-1">
                     <button
@@ -127,7 +129,7 @@ function CartContent() {
                       <Plus size={14} />
                     </button>
                   </div>
-                  <span className="text-lg font-black text-gray-900">
+                  <span className="text-lg font-black text-gray-900 hidden md:block">
                     ₹{(item.price * (item.quantity || 1)).toFixed(2)}
                   </span>
                 </div>

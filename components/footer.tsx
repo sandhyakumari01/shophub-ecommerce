@@ -1,4 +1,4 @@
-import { Store, Github, Linkedin } from "lucide-react";
+import { Store, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 
@@ -49,6 +49,16 @@ export default function Footer() {
                     <Linkedin size={16} className="text-primary" />{" "}
                     LinkedIn
                   </a>
+                </li>
+
+                <li className="flex items-center gap-3 text-sm text-gray-600">
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-2 hover:text-primary transition"
+                  >
+                    <Mail size={16} className="text-primary" />
+                    Contact
+                  </Link>
                 </li>
               </ul>
             </div>

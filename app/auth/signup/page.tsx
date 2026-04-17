@@ -63,12 +63,11 @@ function SignupContent() {
       if (response?.success || response?.message === "User created successfully") {
         toast.success(response.message || "Signup successful");
 
-
-        if (response?.success && response?.user) {
+        if (response?.success && response?.user && response?.token) {
           dispatch(
             loginSuccess({
               user: response.user,
-              isAuthenticated: true,
+              token: response.token,
             })
           );
         }

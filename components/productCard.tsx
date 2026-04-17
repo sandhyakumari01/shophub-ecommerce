@@ -28,7 +28,7 @@ export default function Products() {
 
   if (loading) {
     return (
-      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-8">
+      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
         {[...Array(8)].map((_, i) => (
           <ProductCardSkeleton key={i} />
         ))}
@@ -38,7 +38,7 @@ export default function Products() {
 
   return (
     <div className="p-6 mb-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <Link
             key={product.id}
