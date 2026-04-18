@@ -25,7 +25,7 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // ✅ AUTO CLOSE MENU ON ROUTE CHANGE
+
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -34,7 +34,6 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full shadow-md bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
 
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <div className="rounded-lg bg-primary p-1.5 text-white">
             <Store size={22} />
@@ -44,7 +43,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+
         <div className="hidden md:flex items-center gap-8">
           <NavLinks
             cartCount={cart.length}
@@ -56,10 +55,9 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Mobile Top Bar */}
+
         <div className="md:hidden flex items-center gap-3">
 
-          {/* User/Login */}
           {isAuthenticated ? (
             <UserMenu />
           ) : (
@@ -71,7 +69,7 @@ export default function Navbar() {
             </Button>
           )}
 
-          {/* Hamburger */}
+
           <button
             className="p-2 text-gray-600"
             onClick={toggleMenu}
@@ -83,7 +81,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+
       {isOpen && (
         <div className="md:hidden border-t bg-white p-4 flex flex-col gap-4 animate-in slide-in-from-top">
 
@@ -91,7 +89,7 @@ export default function Navbar() {
             cartCount={cart.length}
             wishlistCount={wishlist.length}
             mobile
-            onClose={() => setIsOpen(false)} // ✅ CLOSE ON CLICK
+            onClose={() => setIsOpen(false)}
           />
 
         </div>

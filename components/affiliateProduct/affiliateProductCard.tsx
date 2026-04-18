@@ -34,9 +34,9 @@ export default function AffiliateProducts({
           {product?.title}
         </h2>
 
-        <p className="mt-1 text-sm text-gray-500">
+        {/* <p className="mt-1 text-sm text-gray-500">
           Source: {product.source || "Store"}
-        </p>
+        </p> */}
 
         <div className="mt-3 flex items-center justify-between">
           <span className="text-lg font-bold text-gray-900">
