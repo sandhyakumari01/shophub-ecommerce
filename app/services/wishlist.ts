@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 export const getWishlistProducts = async (userId: string) => {
   try {
     const response = await axios.get(`${axiosInstance}/wishlist/${userId}`);
-    return response.data;
+    return response?.data;
   } catch (error: any) {
     console.error("Error while getting wishlist products", error.response);
     return error.response?.data;
@@ -21,7 +21,7 @@ export const addWishlistProduct = async (userId: string, productId: number) => {
       userId,
       productId,
     });
-    return response.data;
+    return response?.data;
   } catch (error: any) {
     console.error("Error while adding wishlist product", error.response);
     return error.response?.data;
@@ -36,7 +36,7 @@ export const removeWishlistProduct = async (
     const response = await axios.delete(`${axiosInstance}/remove`, {
       data: { userId, productId },
     });
-    return response.data;
+    return response?.data;
   } catch (error: any) {
     console.error("Error while removing wishlist product", error.response);
     return error.response?.data;

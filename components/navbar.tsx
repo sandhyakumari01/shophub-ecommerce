@@ -16,9 +16,7 @@ import { useSelector } from "react-redux";
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-
   const [isOpen, setIsOpen] = useState(false);
-
   const { isAuthenticated } = useSelector((state: any) => state.auth);
   const cart = useSelector((state: any) => state.cart.items);
   const wishlist = useSelector((state: any) => state.wishlist.items);
@@ -56,7 +54,7 @@ export default function Navbar() {
         </div>
 
 
-        <div className="md:hidden flex items-center gap-3">
+        <div className="md:hidden flex items-center gap-3 ">
 
           {isAuthenticated ? (
             <UserMenu />
@@ -64,6 +62,7 @@ export default function Navbar() {
             <Button
               size="sm"
               onClick={() => router.push("/auth/login")}
+              className="cursor-pointer"
             >
               Login
             </Button>
@@ -115,7 +114,7 @@ function NavLinks({
       <Link
         href="/wishlist"
         className={linkClass}
-        onClick={onClose} // ✅ CLOSE MENU
+        onClick={onClose}
       >
         <div className="relative">
           <Heart size={20} />
@@ -131,7 +130,7 @@ function NavLinks({
       <Link
         href="/cart"
         className={linkClass}
-        onClick={onClose} // ✅ CLOSE MENU
+        onClick={onClose}
       >
         <div className="relative">
           <ShoppingCart size={20} />
@@ -154,8 +153,9 @@ function AuthSection({ isAuthenticated, router }: any) {
     <UserMenu />
   ) : (
     <Button
-      className="w-full md:w-auto"
+      className="w-full md:w-auto cursor-pointer"
       onClick={() => router.push("/auth/login")}
+
     >
       Login
     </Button>

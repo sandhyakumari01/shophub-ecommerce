@@ -1,7 +1,6 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CartContext } from "@/context/CartContext";
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import CartSkeleton from "@/components/skeleton/cartSkeleton";

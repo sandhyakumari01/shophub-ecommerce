@@ -8,9 +8,9 @@ const axiosInstance = axios.create({
 export const getBanners = async () => {
   try {
     const response = await axiosInstance.get(`/banner`);
-    return response.data;
+    return response?.data;
   } catch (error: any) {
     console.error("Error while fetching banners:", error.response);
-    return error.response.data;
+    return error.response?.data;
   }
 };

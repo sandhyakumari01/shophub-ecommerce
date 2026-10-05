@@ -16,7 +16,7 @@ export const AuthenticateSignup = async (
 ): Promise<AuthResponse> => {
   try {
     const response = await axiosInstance.post("/auth/signup", data);
-    return response.data;
+    return response?.data;
   } catch (error: any) {
     console.error("Error call Signup", error.response);
     return error.response?.data;

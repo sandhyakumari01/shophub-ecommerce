@@ -1,4 +1,4 @@
-import { Store, Github, Linkedin, Mail } from "lucide-react";
+import { Store, Github, Linkedin, Mail, Globe } from "lucide-react";
 import Link from "next/link";
 
 
@@ -36,9 +36,11 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-primary transition"
                   >
-                    <Github size={16} className="text-primary" /> GitHub
+                    <Github size={16} className="text-primary" />
+                    GitHub
                   </a>
                 </li>
+
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <a
                     href="https://www.linkedin.com/in/sandhyakumari01/"
@@ -46,8 +48,20 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-primary transition"
                   >
-                    <Linkedin size={16} className="text-primary" />{" "}
+                    <Linkedin size={16} className="text-primary" />
                     LinkedIn
+                  </a>
+                </li>
+
+                <li className="flex items-center gap-3 text-sm text-gray-600">
+                  <a
+                    href="https://portfolio-by-sandhya.netlify.app/projects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary transition"
+                  >
+                    <Globe size={16} className="text-primary" />
+                    Portfolio
                   </a>
                 </li>
 
